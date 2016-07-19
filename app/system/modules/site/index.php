@@ -80,7 +80,7 @@ return [
             'label' => 'Site',
             'icon' => 'system/site:assets/images/icon-site.svg',
             'url' => '@site/page',
-            'access' => 'site: manage site || system: manage widgets || system: manage storage || system: manage settings',
+            'access' => 'site: manage site || system: manage widgets || system: manage storage || system: access settings',
             'active' => '@site*',
             'priority' => 105
         ],
@@ -95,7 +95,7 @@ return [
             'label' => 'Settings',
             'parent' => 'site',
             'url' => '@site/settings',
-            'access' => 'system: manage settings',
+            'access' => 'system: access settings',
             'priority' => 30
         ]
 
@@ -111,6 +111,7 @@ return [
 
         'maintenance' => [
             'enabled' => false,
+            'logo' => '',
             'msg' => ''
         ],
 
@@ -152,6 +153,12 @@ return [
 
         },
 
+        'request' => [function() use ($app) {
+            if (!$app['node']->hasAccess($app['user'])) {
+                $app['kernel']->abort(403, __('Insufficient User Rights.'));
+            }
+        }, -100],
+
         'site' => function ($event, $app) {
 
             $app->on('view.head', function ($event) use ($app) {
@@ -184,8 +191,13 @@ return [
                     'og:url' => $meta->get('canonical'),
                 ]);
 
-                if ($app['node']->get('meta')) {
-                    $meta($app['node']->get('meta'));
+				if ($config = $app['node']->get('meta')) {
+
+					if (!empty($config['og:image'])) {
+                        $config['og:image'] = $app['url']->getStatic($config['og:image'], [], 0);
+                    }
+
+                    $meta($config);
                 }
 
             }, 50);

@@ -20,15 +20,15 @@ class BuildCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected $description = 'Builds a .zip release file.';
+    protected $description = 'Builds a .zip release file';
 
     /**
      * @var string[]
      */
     protected $excludes = [
-        '^(tmp|config\.php|pagekit.+\.zip|pagekit.db)',
+        '^(tmp|config\.php|pagekit.+\.zip|pagekit.db|.+\.map)',
         '^app\/assets\/[^\/]+\/(dist\/vue-.+\.js|dist\/jquery\.js|lodash\.js)',
-        '^app\/assets\/(jquery|vue)\/(src|perf)',
+        '^app\/assets\/(jquery|vue)\/(src|perf|external)',
         '^app\/vendor\/lusitanian\/oauth\/examples',
         '^app\/vendor\/maximebf\/debugbar\/src\/DebugBar\/Resources',
         '^app\/vendor\/nickic\/php-parser\/(grammar|test_old)',

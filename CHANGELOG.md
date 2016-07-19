@@ -1,5 +1,67 @@
 # Changelog
 
+## 1.0.5 (July 1, 2016)
+
+### Fixed
+- Fixed asset upload
+
+## 1.0.4 (June 29, 2016)
+
+### Added
+- Added node's access check
+
+### Fixed
+- Fixed access check for user and site settings
+- Fixed admin dashboard for Safari private window
+- Fixed a situation where a node could be assigned as its own parent
+- Fixed backend password recovery
+- Fixed user approval if verification is activated as well
+- Fixed user verification state
+
+## 1.0.3 (May 11, 2016)
+
+### Added
+- Parse MySQL Port from hostname in installer
+- SSL support for location widget
+
+### Changed
+- Improved widget visibility settings
+- Redirect to extensions/themes overview after install and activation from marketplace
+- Changed signature of setup command
+
+### Fixed
+- Fixed touch support in backend
+- Fixed superfluous request caching
+- Fixed widget settings validation
+- Fixed relative date for languages without plural
+- Fixed non expiring local storage
+- Fixed style and script helper for use in Twig templates
+
+## 1.0.2 (April 22, 2016)
+
+### Fixed
+- Fixed notice when og:image in site meta settings not defined
+
+## 1.0.1 (April 21, 2016)
+
+### Added
+- Added OpenGraph image option for site nodes
+- Added file extension check for storage uploads
+- Added maintenance logo option
+- Added cache break for language file
+
+### Changed
+- Smoothed packages updates
+- Optimized .htaccess
+
+### Fixed
+- Fixed save shortcut in Firefox
+- Fixed reordering in site tree
+- Fixed missing territory data
+- Fixed redirect after login
+- Fixed missing initial active state at pagination
+- Fixed duplicated request occasionally caused by pagination
+
 ## 1.0.0 (April 13, 2016)
 
 ### Fixed

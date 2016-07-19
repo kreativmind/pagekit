@@ -15,7 +15,7 @@ class UserController
      * @Access("user: manage users")
      * @Request({"filter": "array", "page":"int"})
      */
-    public function indexAction($filter = [], $page = 0)
+    public function indexAction($filter = [], $page = null)
     {
         $roles = $this->getRoles();
         unset($roles[Role::ROLE_AUTHENTICATED]);
@@ -107,7 +107,7 @@ class UserController
     }
 
     /**
-     * @Access("system: manage settings")
+     * @Access("system: access settings")
      */
     public function settingsAction()
     {
